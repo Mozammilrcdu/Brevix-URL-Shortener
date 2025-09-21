@@ -1,4 +1,4 @@
-import {PieChart, Pie, Cell, ResponsiveContainer} from "recharts";
+import {PieChart, Pie, Cell, ResponsiveContainer,Tooltip} from "recharts";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -27,6 +27,7 @@ export default function App({stats}) {
               `${device}: ${(percent * 100).toFixed(0)}%`
             }
             dataKey="count"
+            nameKey="device"
           >
             {result.map((entry, index) => (
               <Cell
@@ -35,6 +36,7 @@ export default function App({stats}) {
               />
             ))}
           </Pie>
+          <Tooltip/>
         </PieChart>
       </ResponsiveContainer>
     </div>
