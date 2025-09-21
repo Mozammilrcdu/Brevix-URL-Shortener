@@ -32,3 +32,5 @@ const RedirectLink = () => {
     </div>
   );
 };
+
+export default RedirectLink;
