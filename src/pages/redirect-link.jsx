@@ -6,37 +6,29 @@ import {useParams} from "react-router-dom";
 import {BarLoader} from "react-spinners";
 
 const RedirectLink = () => {
-  const {id} = useParams();
-
-  const {loading, data, fn} = useFetch(getLongUrl, id);
-
-  const {loading: loadingStats, fn: fnStats} = useFetch(storeClicks, {
-    id: data?.id,
-    originalUrl: data?.original_url,
-  });
+  const { id } = useParams();
+  const { loading, data, fn } = useFetch(getLongUrl, id);
 
   useEffect(() => {
     fn();
   }, []);
 
   useEffect(() => {
-    if (!loading && data) {
-      fnStats();
+    if (!loading && data?.id && data?.original_url) {
+      // Ensure URL has protocol
+      let url = data.original_url;
+      if (!/^https?:\/\//i.test(url)) {
+        url = "https://" + url;
+      }
+      storeClicks({ id: data.id, originalUrl: url });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [loading, data]);
 
-  if (loading || loadingStats) {
-    return (
-      <>
-        <BarLoader width={"100%"} color="#36d7b7" />
-        <br />
-        Redirecting...
-      </>
-    );
-  }
-
-  return null;
+  return (
+    <div>
+      <BarLoader width="100%" color="#36d7b7" />
+      <br />
+      Redirecting...
+    </div>
+  );
 };
-
-export default RedirectLink;
