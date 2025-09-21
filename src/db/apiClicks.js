@@ -40,12 +40,11 @@ export async function getClicksForUrl(url_id) {
   return data;
 }
 
-const parser = new UAParser();
-
 export const storeClicks = async ({id, originalUrl}) => {
   try {
+    const parser = new UAParser(window.navigator.userAgent);
     const res = parser.getResult();
-    const device = res.type || "desktop"; // Default to desktop if type is not detected
+    const device = res.device.type || "desktop";
 
     const response = await fetch("https://ipapi.co/json");
     const {city, country_name: country} = await response.json();
