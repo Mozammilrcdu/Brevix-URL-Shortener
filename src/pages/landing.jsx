@@ -63,31 +63,31 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center px-4 md:px-0">
+    <div className="flex flex-col items-center px-4 sm:px-6 md:px-0 max-w-screen-lg mx-auto">
       {/* Main Heading */}
-      <h2 className="my-6 sm:my-10 text-3xl sm:text-6xl lg:text-7xl text-white text-center font-extrabold">
+      <h2 className="my-6 sm:my-10 text-3xl sm:text-5xl lg:text-6xl text-white text-center font-extrabold">
         From cluttered to clean<br /> shorten your links 👇
       </h2>
 
       {/* URL Form */}
       <form
         onSubmit={handleShorten}
-        className="sm:h-14 flex flex-col sm:flex-row w-full md:w-2/4 gap-2 mb-10"
+        className="flex flex-col sm:flex-row w-full sm:w-4/5 md:w-2/3 gap-2 mb-10"
       >
         <Input
           type="url"
           placeholder="Enter your loooong URL"
           value={longUrl}
           onChange={(e) => setLongUrl(e.target.value)}
-          className="h-full flex-1 py-4 px-4"
+          className="flex-1 py-3 px-4"
         />
-        <Button type="submit" className="h-full" variant="destructive">
+        <Button type="submit" className="w-full sm:w-auto py-3" variant="destructive">
           Shorten!
         </Button>
       </form>
 
       {/* Poster Image */}
-      <div className="w-full px-4 sm:px-6 md:px-0 my-8 rounded-2xl overflow-hidden shadow-lg mx-auto max-w-4xl">
+      <div className="w-full rounded-2xl overflow-hidden shadow-lg mb-8">
         <img
           src="/poster.png"
           alt="Poster"
@@ -96,22 +96,21 @@ const LandingPage = () => {
       </div>
 
       {/* Feature Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 w-full md:w-4/5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 w-full sm:w-11/12">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 text-white flex flex-col items-start gap-4 shadow-md hover:scale-105 transition-transform duration-300"
+            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 text-white flex flex-col items-start gap-3 shadow-md hover:scale-105 transition-transform duration-300"
           >
             <div className="text-amber-400">{feature.icon}</div>
-            <h3 className="text-xl font-bold">{feature.title}</h3>
-            <p className="text-sm">{feature.description}</p>
+            <h3 className="text-lg sm:text-xl font-bold">{feature.title}</h3>
+            <p className="text-sm sm:text-base">{feature.description}</p>
           </div>
         ))}
       </div>
 
-
       {/* FAQ Accordion */}
-      <Accordion type="multiple" collapsible className="w-full md:px-11">
+      <Accordion type="multiple" collapsible className="w-full sm:w-4/5 md:w-2/3">
         <AccordionItem value="item-1">
           <AccordionTrigger>
             How does the Brevix URL shortener works?
@@ -134,7 +133,7 @@ const LandingPage = () => {
             What analytics are available for my shortened URLs?
           </AccordionTrigger>
           <AccordionContent>
-            You can view the number of clicks, geolocation data of the clicks
+            You can view the number of clicks, geolocation data of the clicks,
             and device types (mobile/desktop) for each of your shortened URLs.
           </AccordionContent>
         </AccordionItem>

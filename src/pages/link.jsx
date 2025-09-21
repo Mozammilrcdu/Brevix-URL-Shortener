@@ -78,14 +78,14 @@ const LinkPage = () => {
           <a
             href={`https://bvx.vercel.app/${link}`}
             target="_blank"
-            className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
+            className="text-lg sm:text-3xl text-blue-400 font-bold hover:underline break-words"
           >
             https://bvx.vercel.app/{link}
           </a>
           <a
             href={url?.original_url}
             target="_blank"
-            className="flex items-center gap-1 hover:underline cursor-pointer"
+            className="flex items-center gap-1 hover:underline break-words"
           >
             <LinkIcon className="p-1" />
             {url?.original_url}

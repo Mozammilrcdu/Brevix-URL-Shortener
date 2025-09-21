@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import {Copy, Download, LinkIcon, Trash} from "lucide-react";
 import {Link} from "react-router-dom";
 import {Button} from "./ui/button";
@@ -39,13 +38,15 @@ const LinkCard = ({url = [], fetchUrls}) => {
         <span className="text-3xl font-extrabold hover:underline cursor-pointer">
           {url?.title}
         </span>
-        <span className="text-2xl text-blue-400 font-bold hover:underline cursor-pointer">
+        <span className="text-lg sm:text-2xl text-blue-400 font-bold hover:underline break-all truncate max-w-full">
           https://bvx.vercel.app/{url?.custom_url ? url?.custom_url : url.short_url}
         </span>
-        <span className="flex items-center gap-1 hover:underline cursor-pointer">
-          <LinkIcon className="p-1" />
+
+        <span className="flex items-center gap-1 hover:underline break-all truncate max-w-full">
+          <LinkIcon className="p-1 flex-shrink-0" />
           {url?.original_url}
         </span>
+
         <span className="flex items-end font-extralight text-sm flex-1">
           {new Date(url?.created_at).toLocaleString()}
         </span>

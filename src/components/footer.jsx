@@ -21,7 +21,7 @@ const Footer = () => {
         {/* Left: Logo + copyright */}
         <div className="flex flex-col items-center sm:items-start gap-2">
           <Link to="/">
-            <img src="/logo.png" alt="Brevix Logo" className="h-16" />
+            <img src="/logo.png" alt="Brevix Logo" className="h-12 sm:h-16" />
           </Link>
           <div className="text-xs text-gray-500">
             © {new Date().getFullYear()} Brevix. All rights reserved.

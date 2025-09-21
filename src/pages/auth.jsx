@@ -8,7 +8,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 function Auth() {
   let [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const {isAuthenticated, loading} = UrlState();
+  const { isAuthenticated, loading } = UrlState();
   const longLink = searchParams.get("createNew");
 
   useEffect(() => {
@@ -17,13 +17,14 @@ function Auth() {
   }, [isAuthenticated, loading, navigate]);
 
   return (
-    <div className="mt-36 flex flex-col items-center gap-10">
-      <h1 className="text-5xl font-extrabold">
-        {searchParams.get("createNew")
+    <div className="mt-24 sm:mt-36 flex flex-col items-center gap-8 px-4">
+      <h1 className="text-3xl sm:text-5xl font-extrabold text-center">
+        {longLink
           ? "Hold up! Let's login first.."
           : "Login / Signup"}
       </h1>
-      <Tabs defaultValue="login" className="w-[400px]">
+
+      <Tabs defaultValue="login" className="w-full max-w-md">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="signup">Signup</TabsTrigger>
